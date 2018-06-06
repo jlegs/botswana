@@ -1,0 +1,123 @@
+#include <Servo.h>
+
+Servo servo;  // create servo object to control a servo
+// twelve servo objects can be created on most boards
+Servo servo2;
+Servo servo3;
+
+int pos = 0;    // variable to store the servo position
+int servo1uppos = 70;
+int servo2uppos = 150;
+int servo3uppos = 80;
+int servo1downpos = 110;
+int servo2downpos = 180;
+int servo3downpos = 100;
+
+int s1pos = 0;
+int s2pos = 0;
+int s3pos = 0;
+
+
+void liftleg() {
+  delay(700);
+
+  for (s1pos=110; s1pos >=70;s1pos -=1) {
+    servo.write(s1pos);
+    delay(15);
+  };
+
+  for (s2pos=180; s2pos >=150; s1pos -=1){
+    servo2.write(s2pos);
+    delay(15);
+  };
+
+//  for (s3pos=100; s3pos>=80; s3pos -=1){
+//    servo3.write(s3pos);
+//    delay(15);
+//  }
+//  servo2.write(150);
+//  delay(200);
+//  servo3.write(80);
+}
+
+void downleg() {
+  delay(700);
+  servo.write(70);
+  servo2.write(150);
+
+  for (s1pos=70; s1pos <=110;s1pos +=1) {
+    servo.write(s1pos);
+    delay(15);
+  };
+
+  for (s2pos=150; s2pos <=180; s1pos +=1){
+    servo2.write(s2pos);
+    delay(15);
+  };
+
+//  for (s3pos=80; s3pos<=100; s3pos +=1){
+//    servo3.write(s3pos);
+//    delay(15);
+//  }
+  
+//  delay(700);
+//  servo2.write(180);
+//  servo.write(110);
+//  delay(200);
+//  servo3.write(100);
+}
+
+void setup() {
+  servo.write(70);
+  servo2.write(150);
+  servo3.write(90);
+  servo.attach(9);  // attaches the servo on pin 9 to the servo object
+  servo2.attach(8);
+  servo3.attach(10);
+}
+
+void loop() {
+//  liftleg();
+//  downleg();
+  delay(700);
+
+  delay(700);
+  for (pos = 180; pos >= 150; pos -= 1) {
+    servo2.write(pos);
+    delay(15);
+  }
+
+  for (pos = 110; pos >= 70; pos -= 1) {
+    servo.write(pos);
+    delay(15);
+  }
+  for (pos = 80; pos <= 100; pos += 1) {
+    servo3.write(pos);
+    delay(15);
+  }
+
+  
+  for (pos = 150; pos <= 180; pos += 1) {
+    servo2.write(pos);
+    delay(15);
+  }
+  for (pos = 70; pos <= 110; pos += 1) {
+    servo.write(pos);
+    delay(15);
+  }
+  for (pos = 100; pos >= 80; pos -= 1) {
+    servo3.write(pos);
+    delay(15);
+  }
+
+
+//  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+//    // in steps of 1 degree
+//    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+//    delay(15);                       // waits 15ms for the servo to reach the position
+//  }
+//  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+//    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+//    delay(15);                       // waits 15ms for the servo to reach the position
+//  }
+}
